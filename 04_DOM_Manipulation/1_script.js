@@ -6,6 +6,15 @@
 
 // It is stored in tree structure format. Each HTML element in the DOM is treated as object.
 
+// HTML DOM power the javascript to create Dynamic HTML 
+    // js can change all the HTML elements
+    // js can change all the HTML Attributes
+    // js can change all the styles of HTML page
+    // js can remove existing HTML Elements
+    // js can add new HTML Elements and Attributes
+    // js can react to all existing HTML events
+    // js can ceate new HTML events.
+
 // Let's manipulate the DOM using Javascript
 
 // First we need to select the object(i.e HTML element)
