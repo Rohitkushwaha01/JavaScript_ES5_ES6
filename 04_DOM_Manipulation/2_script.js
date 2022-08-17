@@ -25,7 +25,7 @@ checkBtn.addEventListener('click', function(){
     }
     else if (guessInput == randomNumber) {
         display("Correct Guess!!");
-        document.querySelector('body').style.backgroundColor = "green"
+        document.querySelector('body').style.backgroundColor = "green";
         if (score > highScore) {
             highScore = score;
             document.querySelector('.highscore').textContent = highScore
@@ -46,5 +46,8 @@ checkBtn.addEventListener('click', function(){
 });
 
 again.addEventListener('click', ()=>{
-    document.location.reload();
+    display("Start guessing!!");
+    scoreElement.textContent = 20;
+    document.querySelector('body').style.backgroundColor = "black";
+    Number(document.querySelector(".guess").value) = 0; 
 })
