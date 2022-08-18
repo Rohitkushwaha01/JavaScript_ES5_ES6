@@ -1,0 +1,70 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(rgb(37, 243, 37), rgb(10, 248, 208));
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  max-height: 100%;
+  overflow-x: hidden;
+}
+
+.btns {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.show-modal {
+  margin: 20px;
+  font-size: 1.5rem;
+  padding: 5px;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid;
+}
+
+.modal {
+  text-align: start;
+  width: 60%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 4px;
+  margin: 20px auto;
+  border: 1px solid;
+  z-index: 0;
+  display: none;
+}
+
+.close-modal {
+  position: relative;
+  left: 95%;
+  padding: 2px 5px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(0.2px);
+  z-index: -1;
+}
+
+.hidden {
+  display: block;
+}
+
+@media screen and (max-width: 760px) {
+  .modal {
+    width: 95%;
+  }
+}
