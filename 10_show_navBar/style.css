@@ -1,9 +1,9 @@
 body{
     display: flex;
     justify-content: flex-start;
-    align-items: center;
     height: 100vh;
     margin: auto;
+    transition: transform .5s ease-in;
 }
 
 nav{
@@ -11,6 +11,9 @@ nav{
     padding: 0px 20px;
     border-radius: 15px;
     font-size: 19px;
+    position: absolute;
+    z-index: -1;
+    margin-top: 20px;
 }
 
 ul{
@@ -23,10 +26,19 @@ li{
 }
 
 img{
-    width: 30%;
-    height: 30%;
+    
+    width: 100px;
+    height: 100px;
 }
 
 .img-end{
-    text-align: end;
+    text-align: center;
+}
+
+.img-end p{
+    font-size: 20px;
+}
+
+.hidden{
+    display: none;
 }

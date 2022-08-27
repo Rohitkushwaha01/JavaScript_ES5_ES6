@@ -5,7 +5,7 @@ let angle = 1;
 
 
 function resetAngle(){
-    if(angle>360){
+    if(angle == 360){
         angle = 1;
     }
 }
@@ -20,7 +20,6 @@ setInterval(() => {
     resetAngle();
     settingIcon2.style.transform = `rotate(${angle}deg)`
     angle++;
-    console.log(angle)
 }, 10);
 
 setInterval(() => {
