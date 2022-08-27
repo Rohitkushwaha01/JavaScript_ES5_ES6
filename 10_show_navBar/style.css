@@ -1,0 +1,32 @@
+body{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    margin: auto;
+}
+
+nav{
+    background-color: burlywood;
+    padding: 0px 20px;
+    border-radius: 15px;
+    font-size: 19px;
+}
+
+ul{
+    list-style-type: none;
+    display: flex;
+}
+
+li{
+    padding-right: 40px;
+}
+
+img{
+    width: 30%;
+    height: 30%;
+}
+
+.img-end{
+    text-align: end;
+}
