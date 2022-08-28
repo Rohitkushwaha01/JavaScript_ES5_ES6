@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(24, 24, 55);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+    height: 500px;
+}
+
+div{
+    text-align: center;
+}
+
+#earth{
+    width: 75%;
+}
+
+#rocket{
+    position: absolute;
+    top: 186px;
+    left: 512px;
+    width: 25%;
+}
+
+.four-1{
+    width: 200px;
+    position: relative;
+}
+
+.four-2{
+    width: 200px;
+    position: relative;
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.item-1,.item-4{
+    width: 40%;
+}
+
+.item-1{
+    text-align: end;
+}
+
+.item-2{
+    width: 30%;
+    text-align: center;
+}
+
+.item-4{
+    text-align: start;
+}
