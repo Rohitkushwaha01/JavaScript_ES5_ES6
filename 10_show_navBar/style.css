@@ -41,3 +41,22 @@ img {
 .hidden {
   display: none;
 }
+
+@media screen and (max-width:768px){
+  body{
+    flex-direction: column;
+  }
+  nav{
+    width: 40%;
+    margin: auto;
+    position: static;
+  }
+  ul{
+    display: block;
+    text-align: center;
+  }
+  li{
+    margin-top: 15px;
+    padding-right: 0px;
+  }
+}
