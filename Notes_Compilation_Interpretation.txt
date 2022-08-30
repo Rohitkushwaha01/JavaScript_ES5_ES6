@@ -49,6 +49,6 @@ NOTE: portable file: A document that retains its page layout intact no matter wh
 
 # Then this machine code is executed immediately as js follows just-in-time compilation.
 
-# first js-engine generate a  very unoptimized code as to make a program run and then in the background this code is being optimized and recomplied during the already running program execution and this can be done multiple times and after each optimization and unoptimized code is simply swapped with the optimized code  without stopping the code execution.
+# first js-engine generate a very unoptimized code as to make a program run and then in the background this code is being optimized and recomplied during the already running program execution and this can be done multiple times and after each optimization and unoptimized code is simply swapped with the optimized code  without stopping the code execution.
 
 # This all optimization is happens is some special threads that we can't access from the code.
