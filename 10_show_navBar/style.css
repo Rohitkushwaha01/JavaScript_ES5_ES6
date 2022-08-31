@@ -42,23 +42,22 @@ img {
   display: none;
 }
 
-@media screen and (max-width:768px){
-  body{
+@media screen and (max-width: 768px) {
+  body {
     flex-direction: column;
     height: auto;
   }
-  nav{
+  nav {
     width: 60%;
     margin: auto;
     position: static;
   }
-  ul{
+  ul {
     display: block;
     text-align: center;
     padding-left: 0px;
-
   }
-  li{
+  li {
     margin-top: 15px;
     padding-right: 0px;
   }
