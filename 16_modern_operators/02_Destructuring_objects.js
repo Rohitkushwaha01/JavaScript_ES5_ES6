@@ -41,7 +41,6 @@ const restaurant = {
     }
 }
 
-
 let {name, openingHours, categories} = restaurant;
 console.log(name, openingHours, categories);
 
