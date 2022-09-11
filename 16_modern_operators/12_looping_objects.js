@@ -7,11 +7,11 @@ const restaurant = {
     openingHours: {
         monday:{
             open: 12,
-            close: 12
+            close: 10
         },
         tuesday: {
             open: 12,
-            close: 12
+            close: 1
         },
         wednesday:{
             open: 12,
@@ -19,15 +19,15 @@ const restaurant = {
         },
         thursday: {
             open: 12,
-            close: 12
+            close: 24
         },
         friday:{
             open: 12,
-            close: 12
+            close: 18
         },
         saturday: {
             open: 12,
-            close: 9
+            close: 0
         }
     },
     order: function(startIndex, mainIndex){
@@ -41,13 +41,23 @@ const restaurant = {
 // use Object.keys() method to loop through objects
 // pass the your object as a parameter to the Object.keys() method
 for(const day of Object.keys(restaurant)){
-    console.log(day)
+    // console.log(day)
 }
 
 for(const day of Object.keys(restaurant.openingHours)){
-    console.log(day)
-}
+    // console.log(day)
+} 
 
 // Object.values(object) returns all object value in form of array.
 const objProperties = Object.values(restaurant)
-console.log(objProperties)
+// console.log(objProperties)
+
+// looping to get entire object with keys and values.
+
+for(const entries of Object.entries(restaurant)){
+    console.log(entries);
+}
+
+for(const [key, {open, close}] of Object.entries(restaurant.openingHours)){
+    console.log(`On ${key} we open at ${open} and close ${close}`);
+}
