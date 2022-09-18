@@ -1,5 +1,4 @@
 const thunderClouds = "You're saying those words like you hate me now";
-const Audio = "I'm gonna live like tomorrow doesn't exist love me now";
 
 // String always starts with 0 index.
 console.log(thunderClouds[0]);
