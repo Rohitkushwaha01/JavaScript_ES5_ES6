@@ -7,11 +7,9 @@ const flights =
 //            Departure from FAO to LIS (12h30)
 
 const splitFlights = flights.split('+');
-console.log(splitFlights);
 
-let splitFlightsArrray;
 for (const item of splitFlights) {
-    splitFlightsArrray = item.replaceAll("_", " ").split(';');
+    let splitFlightsArrray = item.replaceAll("_", " ").split(';');
     let sliceFlightOne = splitFlightsArrray[1].slice(0,3).toUpperCase();
     let sliceFlightTwo = splitFlightsArrray[2].slice(0,3).toUpperCase();
     let hourFlight = splitFlightsArrray[3].replace(":", "h");
