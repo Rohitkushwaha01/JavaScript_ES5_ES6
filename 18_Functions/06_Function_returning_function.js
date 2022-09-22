@@ -12,3 +12,8 @@ greet("Good Morning")("Rohit")
 // Or we can do 
 const greeterGM = greet("Good Morning");
 greeterGM("Rohit")
+
+// Function returning function using arrow functioin
+const greetArrow = greeting => name => console.log(`${greeting} ${name}`);
+
+greetArrow("Hello")("Rohit");
