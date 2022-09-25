@@ -1,3 +1,5 @@
+// In for of loop continue and break statement work but in forEach loop continue and break does not work, forEach loop loop through the entire array at once.
+
 const restaurant = {
     name: 'Classico Italino',
     location: "Via Angelo, Italy",
