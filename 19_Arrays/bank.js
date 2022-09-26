@@ -74,12 +74,12 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // Project begins.
-console.log(containerMovements.innerHTML);
-const accMovement1 = account1.movements;
+// console.log(containerMovements.innerHTML);
 
 const displayMovements = function(movement){
     containerMovements.innerHTML = '';
-    accMovement1.forEach((money, index) => {
+    
+    movement.forEach((money, index) => {
         const type = (money>0)?'deposit':'withdrawal';
         const html = `
         <div class="movements__row">
@@ -91,7 +91,8 @@ const displayMovements = function(movement){
     });
 }
 
-displayMovements(accMovement1);
+
+displayMovements(account2.movements);
 
 // const userFullName = "Steven Thomas Williams"; // user should be stw
 const username = (user)=> user.toLowerCase().split(' ').map(name=>name[0]).join('');
@@ -104,4 +105,23 @@ const calcPrintBalance = function(movements){
   return (balance + "€");
 }
 
-labelBalance.innerText = calcPrintBalance(account3.movements);
+const calcPrintDeposit = function(movements){
+  const balance = movements.filter(mov=>mov>0).reduce((acc, curr)=>acc+curr,0);
+  return (balance + "€");
+}
+
+const calcPrintWithdrawal = function(movements){
+  const balance = movements.filter(mov=>mov<0).reduce((acc, curr)=>Math.abs(acc+curr),0);
+  return (balance + "€");
+}
+
+const calcPrintIntrest = function(movements){
+  const balance = movements.filter((mov)=>mov>0).map((mov)=>(mov * 1.2)/100).reduce((acc, curr)=>acc+curr,0);
+  return (balance + "€");
+}
+
+
+labelBalance.innerText = calcPrintBalance(account2.movements);
+labelSumIn.innerText = calcPrintDeposit(account2.movements);
+labelSumOut.innerText = calcPrintWithdrawal(account2.movements);
+labelSumInterest.innerText = calcPrintIntrest(account2.movements);
