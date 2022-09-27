@@ -33,7 +33,14 @@ const account4 = {
   pin: 4444,
 };
 
-const accounts = [account1, account2, account3, account4];
+const account5 = {
+  owner: "Rohit Kushwaha",
+  movements: [800, 550, -900, 35000, 650, -130, 50, 7300],
+  interestRate: 1.2, // %
+  pin: 5556,
+};
+
+const accounts = [account1, account2, account3, account4, account5];
 
 // Elements
 const labelWelcome = document.querySelector(".welcome");
@@ -102,6 +109,7 @@ const username = (user) =>
     .split(" ")
     .map((name) => name[0])
     .join("");
+
 accounts.forEach((account) => (account.username = username(account.owner)));
 console.log(accounts);
 
@@ -137,3 +145,27 @@ labelBalance.innerText = calcPrintBalance(account2.movements);
 labelSumIn.innerText = calcPrintDeposit(account2.movements);
 labelSumOut.innerText = calcPrintWithdrawal(account2.movements);
 labelSumInterest.innerText = calcPrintIntrest(account2.movements);
+
+
+// Event handler
+
+
+let currentAccount;
+
+btnLogin.addEventListener('click', function(e){
+  e.preventDefault();
+
+  currentAccount = accounts.find(acc=>acc.username === inputLoginUsername.value);
+  // console.log(inputLoginUsername.value);
+
+  if(currentAccount?.pin == inputLoginPin.value){
+    // Display Login message
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner}`
+    // Display UI
+    containerApp.style.opacity = 100;
+    console.log("login")
+  }
+  else{
+    console.log("Wrong password")
+  }
+})
