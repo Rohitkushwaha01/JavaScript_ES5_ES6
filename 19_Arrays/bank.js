@@ -36,8 +36,8 @@ const account4 = {
 const account5 = {
   owner: "Rohit Kushwaha",
   movements: [800, 550, -900, 35000, 650, -130, 50, 7300],
-  interestRate: 1.2, // %
-  pin: 5556,
+  interestRate: 5.0, // %
+  pin: 5555,
 };
 
 const accounts = [account1, account2, account3, account4, account5];
@@ -90,17 +90,13 @@ const displayMovements = function (movement) {
     const type = money > 0 ? "deposit" : "withdrawal";
     const html = `
         <div class="movements__row">
-            <div class="movements__type movements__type--${type}">${
-      index + 1
-    } ${type}</div>
+            <div class="movements__type movements__type--${type}">${index + 1} ${type}</div>
             <div class="movements__value">${money}€</div>
         </div>
         `;
     containerMovements.insertAdjacentHTML("afterbegin", html);
   });
 };
-
-displayMovements(account2.movements);
 
 // const userFullName = "Steven Thomas Williams"; // user should be stw
 const username = (user) =>
@@ -116,39 +112,34 @@ console.log(accounts);
 // working on total balance.
 const calcPrintBalance = function (movements) {
   const balance = movements.reduce((acc, curr) => acc + curr, 0);
-  return balance + "€";
+  labelBalance.innerText = balance + "€";
 };
 
 const calcPrintDeposit = function (movements) {
   const balance = movements
     .filter((mov) => mov > 0)
     .reduce((acc, curr) => acc + curr, 0);
-  return balance + "€";
+    labelSumIn.innerText = balance + "€";
 };
 
 const calcPrintWithdrawal = function (movements) {
   const balance = movements
     .filter((mov) => mov < 0)
     .reduce((acc, curr) => Math.abs(acc + curr), 0);
-  return balance + "€";
+  labelSumOut.innerText = balance + "€";
 };
 
-const calcPrintIntrest = function (movements) {
+const calcPrintIntrest = function (movements, interest) {
   const balance = movements
     .filter((mov) => mov > 0)
-    .map((mov) => (mov * 1.2) / 100)
+    .map((mov) => (mov * interest)/ 100)
     .reduce((acc, curr) => acc + curr, 0);
-  return balance + "€";
+  labelSumInterest.innerText = balance + "€";
 };
 
-labelBalance.innerText = calcPrintBalance(account2.movements);
-labelSumIn.innerText = calcPrintDeposit(account2.movements);
-labelSumOut.innerText = calcPrintWithdrawal(account2.movements);
-labelSumInterest.innerText = calcPrintIntrest(account2.movements);
 
 
 // Event handler
-
 
 let currentAccount;
 
@@ -158,14 +149,29 @@ btnLogin.addEventListener('click', function(e){
   currentAccount = accounts.find(acc=>acc.username === inputLoginUsername.value);
   // console.log(inputLoginUsername.value);
 
+  console.log(currentAccount)
   if(currentAccount?.pin == inputLoginPin.value){
     // Display Login message
     labelWelcome.textContent = `Welcome back, ${currentAccount.owner}`
+
     // Display UI
     containerApp.style.opacity = 100;
-    console.log("login")
+
+    // display movements of current account.
+    displayMovements(currentAccount.movements);
+
+    calcPrintBalance(currentAccount.movements);
+    calcPrintDeposit(currentAccount.movements);
+    calcPrintWithdrawal(currentAccount.movements);
+    calcPrintIntrest(currentAccount.movements, currentAccount.interestRate);
+
+    console.log("login");
+
+    // clearing input field
+    inputLoginPin.value = inputLoginUsername.value =''
+    inputLoginPin.blur()
   }
   else{
-    console.log("Wrong password")
+    alert("Wrong password")
   }
 })
