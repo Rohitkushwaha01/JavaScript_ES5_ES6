@@ -1,4 +1,5 @@
 // sorting: Sorting means arranging string, arrays, numbers in ascending order or in descendin order.
+// Array sort method an array alphabetically.
 // Sorting usually works on string only but we can use sorting method for number by passing some callback function.
 // Sorting method is mutated.
 
