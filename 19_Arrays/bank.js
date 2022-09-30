@@ -83,10 +83,13 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // Project begins.
 // console.log(containerMovements.innerHTML);
 
-const displayMovements = function (movement) {
+const displayMovements = function (movement, sort = false) {
   containerMovements.innerHTML = "";
 
-  movement.forEach((money, index) => {
+  
+  const mov = sort? movement.slice().sort((a, b)=>a-b) :  movement;
+
+  mov.forEach((money, index) => {
     const type = money > 0 ? "deposit" : "withdrawal";
     const html = `
         <div class="movements__row">
@@ -174,4 +177,13 @@ btnLogin.addEventListener('click', function(e){
   else{
     alert("Wrong password")
   }
+});
+
+let sorted = false;
+
+btnSort.addEventListener('click', (e)=>{
+  e.preventDefault();
+
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 })
