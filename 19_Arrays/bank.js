@@ -40,7 +40,14 @@ const account5 = {
   pin: 5555,
 };
 
-const accounts = [account1, account2, account3, account4, account5];
+const account6 = {
+  owner: "Gaurav Datir",
+  movements: [800, 550, 900, 5000, 650, -130, 50, 7300],
+  interestRate: 6.9, // %
+  pin: 6666,
+};
+
+const accounts = [account1, account2, account3, account4, account5, account6];
 
 // Elements
 const labelWelcome = document.querySelector(".welcome");
