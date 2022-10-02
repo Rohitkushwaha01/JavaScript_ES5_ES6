@@ -92,7 +92,6 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const displayMovements = function (movement, sort = false) {
   containerMovements.innerHTML = "";
-
   
   const mov = sort? movement.slice().sort((a, b)=>a-b) :  movement;
 
@@ -146,8 +145,6 @@ const calcPrintIntrest = function (movements, interest) {
     .reduce((acc, curr) => acc + curr, 0);
   labelSumInterest.innerText = balance + "€";
 };
-
-
 
 // Event handler
 
