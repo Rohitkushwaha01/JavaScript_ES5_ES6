@@ -190,4 +190,16 @@ btnSort.addEventListener('click', (e)=>{
 
   displayMovements(currentAccount.movements, !sorted);
   sorted = !sorted;
-})
+});
+
+btnTransfer.addEventListener('click', (e)=>{
+  e.preventDefault();
+  console.log(inputTransferTo.value);
+  console.log(inputTransferAmount.value);
+
+  if(inputTransferAmount > 0){
+    
+  }
+
+  inputTransferTo.value = inputTransferAmount.value = '';
+});
