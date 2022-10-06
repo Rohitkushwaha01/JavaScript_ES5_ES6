@@ -146,6 +146,15 @@ const calcPrintIntrest = function (movements, interest) {
   labelSumInterest.innerText = balance + "€";
 };
 
+const updateUI = function (currAccount){
+   // display movements of current account.
+   displayMovements(currAccount.movements);
+   calcPrintBalance(currAccount.movements);
+   calcPrintDeposit(currAccount.movements);
+   calcPrintWithdrawal(currAccount.movements);
+   calcPrintIntrest(currAccount.movements, currAccount.interestRate);
+}
+
 // Event handler
 
 let currentAccount;
@@ -163,15 +172,7 @@ btnLogin.addEventListener('click', function(e){
 
     // Display UI
     containerApp.style.opacity = 100;
-
-    // display movements of current account.
-    displayMovements(currentAccount.movements);
-
-    calcPrintBalance(currentAccount.movements);
-    calcPrintDeposit(currentAccount.movements);
-    calcPrintWithdrawal(currentAccount.movements);
-    calcPrintIntrest(currentAccount.movements, currentAccount.interestRate);
-
+    updateUI(currentAccount);
     console.log("login");
 
     // clearing input field
@@ -194,11 +195,19 @@ btnSort.addEventListener('click', (e)=>{
 
 btnTransfer.addEventListener('click', (e)=>{
   e.preventDefault();
-  console.log(inputTransferTo.value);
-  console.log(inputTransferAmount.value);
+  const amount = Number(inputTransferAmount.value);
+  console.log(amount);
+  const receiverAcc = accounts.find(acc=>acc.username === inputTransferTo.value);
+  console.log(receiverAcc);
+  console.log(currentAccount.balance);
 
-  if(inputTransferAmount > 0){
-    
+  if(amount > 0 && currentAccount.balance >= amount && receiverAcc?.username !== currentAccount.user ){
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+    updateUI(currentAccount);
+    console.log(amount);
+    console.log(receiverAcc);
+    console.log(currentAccount);
   }
 
   inputTransferTo.value = inputTransferAmount.value = '';
