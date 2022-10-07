@@ -119,40 +119,34 @@ accounts.forEach((account) => (account.username = username(account.owner)));
 console.log(accounts);
 
 // working on total balance.
-const calcPrintBalance = function (movements) {
-  const balance = movements.reduce((acc, curr) => acc + curr, 0);
-  labelBalance.innerText = balance + "€";
+const calcPrintBalance = function (acc) {
+  acc.balance = acc.movements.reduce((acc, curr) => acc + curr, 0);
+  labelBalance.innerText = `${acc.balance}€`;
 };
 
-const calcPrintDeposit = function (movements) {
-  const balance = movements
-    .filter((mov) => mov > 0)
-    .reduce((acc, curr) => acc + curr, 0);
-    labelSumIn.innerText = balance + "€";
-};
+const calcSummary = function(acc){
+  const incomes = acc.movements
+  .filter((mov) => mov > 0)
+  .reduce((acc, curr) => acc + curr, 0);
+  labelSumIn.innerText = `${incomes}€`;
 
-const calcPrintWithdrawal = function (movements) {
-  const balance = movements
+  const out = acc.movements
     .filter((mov) => mov < 0)
     .reduce((acc, curr) => Math.abs(acc + curr), 0);
-  labelSumOut.innerText = balance + "€";
-};
+  labelSumOut.innerText = `${Math.abs(out)}€`;
 
-const calcPrintIntrest = function (movements, interest) {
-  const balance = movements
+  const interest = acc.movements
     .filter((mov) => mov > 0)
-    .map((mov) => (mov * interest)/ 100)
+    .map((mov) => (mov * acc.interestRate)/ 100)
     .reduce((acc, curr) => acc + curr, 0);
-  labelSumInterest.innerText = balance + "€";
-};
+  labelSumInterest.innerText = `${interest}€`;
+}
 
+// display movements of current account.
 const updateUI = function (currAccount){
-   // display movements of current account.
    displayMovements(currAccount.movements);
-   calcPrintBalance(currAccount.movements);
-   calcPrintDeposit(currAccount.movements);
-   calcPrintWithdrawal(currAccount.movements);
-   calcPrintIntrest(currAccount.movements, currAccount.interestRate);
+   calcPrintBalance(currAccount);
+   calcSummary(currAccount);
 }
 
 // Event handler
@@ -163,7 +157,6 @@ btnLogin.addEventListener('click', function(e){
   e.preventDefault();
 
   currentAccount = accounts.find(acc=>acc.username === inputLoginUsername.value);
-  // console.log(inputLoginUsername.value);
 
   console.log(currentAccount)
   if(currentAccount?.pin == inputLoginPin.value){
@@ -173,7 +166,6 @@ btnLogin.addEventListener('click', function(e){
     // Display UI
     containerApp.style.opacity = 100;
     updateUI(currentAccount);
-    console.log("login");
 
     // clearing input field
     inputLoginPin.value = inputLoginUsername.value =''
@@ -188,7 +180,6 @@ let sorted = false;
 
 btnSort.addEventListener('click', (e)=>{
   e.preventDefault();
-
   displayMovements(currentAccount.movements, !sorted);
   sorted = !sorted;
 });
@@ -196,18 +187,16 @@ btnSort.addEventListener('click', (e)=>{
 btnTransfer.addEventListener('click', (e)=>{
   e.preventDefault();
   const amount = Number(inputTransferAmount.value);
-  console.log(amount);
   const receiverAcc = accounts.find(acc=>acc.username === inputTransferTo.value);
-  console.log(receiverAcc);
   console.log(currentAccount.balance);
 
   if(amount > 0 && currentAccount.balance >= amount && receiverAcc?.username !== currentAccount.user ){
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
     updateUI(currentAccount);
-    console.log(amount);
-    console.log(receiverAcc);
-    console.log(currentAccount);
+  }
+  else{
+    alert("Insufficient Balance")
   }
 
   inputTransferTo.value = inputTransferAmount.value = '';
