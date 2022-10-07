@@ -201,3 +201,15 @@ btnTransfer.addEventListener('click', (e)=>{
 
   inputTransferTo.value = inputTransferAmount.value = '';
 });
+
+btnClose.addEventListener('click', function(e){
+  e.preventDefault();
+  const closeUsername = inputCloseUsername.value;
+  const closePin = inputClosePin.value;
+
+  if(closeUsername == currentAccount.username && closePin == currentAccount.pin){
+    const index = accounts.findIndex(acc => acc.username === currentAccount.username);
+    accounts.splice(index, 1);
+  }
+  console.log(accounts)
+})
