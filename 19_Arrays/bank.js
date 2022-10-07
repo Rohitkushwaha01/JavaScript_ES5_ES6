@@ -155,10 +155,8 @@ let currentAccount;
 
 btnLogin.addEventListener('click', function(e){
   e.preventDefault();
-
   currentAccount = accounts.find(acc=>acc.username === inputLoginUsername.value);
 
-  console.log(currentAccount)
   if(currentAccount?.pin == inputLoginPin.value){
     // Display Login message
     labelWelcome.textContent = `Welcome back, ${currentAccount.owner}`
@@ -211,5 +209,8 @@ btnClose.addEventListener('click', function(e){
     const index = accounts.findIndex(acc => acc.username === currentAccount.username);
     accounts.splice(index, 1);
   }
-  console.log(accounts)
+  console.log(accounts);
+
+  // hide the UI
+  containerApp.style.opacity = 0;
 })
