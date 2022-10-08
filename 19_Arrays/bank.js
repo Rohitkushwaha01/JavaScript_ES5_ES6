@@ -228,3 +228,9 @@ btnLoan.addEventListener('click', function(e){
   inputLoanAmount.value = " ";
   inputLoanAmount.blur();
 });
+
+// labelBalance.addEventListener('click', function(){
+//   const movementsUI = Array.from(document.querySelectorAll('.movements__value'), ele => Number(ele.textContent.replace("€", "")));
+
+//   console.log(movementsUI);
+// });
