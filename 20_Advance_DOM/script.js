@@ -30,10 +30,23 @@ document.addEventListener('keydown', function (e) {
 });
 
 //////////////////////////////////////
+// Learn more button
 
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1')
 
 btnScrollTo.addEventListener('click', (e)=>{
   section1.scrollIntoView({behavior:'smooth'});
+})
+
+//////////////////////////////////////
+// Navbar 
+
+document.querySelector('.nav__links').addEventListener('click', (e)=>{
+  e.preventDefault();
+
+  if(e.target.classList.contains('nav__link')){
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({behavior:"smooth"});
+  }
 })
