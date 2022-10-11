@@ -40,7 +40,7 @@ btnScrollTo.addEventListener('click', (e)=>{
 })
 
 //////////////////////////////////////
-// Navbar 
+// Navbar links
 
 document.querySelector('.nav__links').addEventListener('click', (e)=>{
   e.preventDefault();

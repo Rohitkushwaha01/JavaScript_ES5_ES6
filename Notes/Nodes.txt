@@ -1,0 +1,1 @@
+Nodes in javascript can be anything such as text, html elements, comment, etc.
