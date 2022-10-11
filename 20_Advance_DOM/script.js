@@ -86,6 +86,7 @@ tabsContainer.addEventListener('click', (e)=>{
 //Menu fade animation.
 
 // this function is too correct but use another one best practice
+
 // const handleHover = function(e, opacity){
 //   if(e.target.classList.contains('nav__link')){
 //     const link = e.target;
@@ -122,3 +123,16 @@ const handleHover = function(e){
 
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
+
+//////////////////////////////////////
+// Sticky navigation
+
+// Don't use the below code bad practice.
+
+// const initialCoords = section1.getBoundingClientRect();
+// console.log(initialCoords);
+
+// window.addEventListener('scroll', function(){
+//   if(window.scrollY > initialCoords.top) nav.classList.add('sticky');
+//   else nav.classList.remove('sticky');
+// })
