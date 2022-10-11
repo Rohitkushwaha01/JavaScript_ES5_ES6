@@ -49,4 +49,42 @@ document.querySelector('.nav__links').addEventListener('click', (e)=>{
     const id = e.target.getAttribute('href');
     document.querySelector(id).scrollIntoView({behavior:"smooth"});
   }
+});
+
+//////////////////////////////////////
+// Tabbed component
+
+const tabs = document.querySelectorAll(".operations__tab");
+const tabsContainer = document.querySelector(".operations__tab-container");
+const tabsContent = document.querySelectorAll(".operations__content");
+
+console.log(tabs);
+console.log(tabsContainer);
+console.log(tabsContent)
+
+// Bad Practice: use event delegation.
+// tabs.forEach((tab)=>{
+//   tab.addEventListener('click', (e)=>{
+//     // const activetab = tab.classList.contains('operations__tab--active');
+//     // console.log(activetab);
+//     if(tab.classList.contains('operations__tab--active')){
+//       tab.classList.toggle('operations__tab--active');
+//     }else{
+//       tab.classList.toggle('operations__tab--active');
+//     }
+//     console.log(tab)
+//   })
+// })
+
+tabsContainer.addEventListener('click', (e)=>{
+  const clicked = e.target.closest('.operations__tab');
+  console.log(clicked);
+  if(!clicked) return;
+  tabs.forEach((tab)=> tab.classList.remove('operations__tab--active'));
+  clicked.classList.add('operations__tab--active');
+
+  // activate content area
+  tabsContent.forEach((tab)=> tab.classList.remove('operations__content--active')); // removing all the class
+  document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active');
 })
+
