@@ -151,3 +151,19 @@ const headerObserver = new IntersectionObserver(stickyNav, {root: null, threshol
 headerObserver.observe(header);
 
 //////////////////////////////////////
+// Revealing section on Scoll
+const allSection = document.querySelectorAll('.section');
+
+const reavealSection = function(entries, observer){
+  const [entry] = entries;
+  if(!entry.isIntersecting) return;
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
+}
+
+const sectionObserver = new IntersectionObserver(reavealSection, {root:null, threshold: 0.15});
+
+allSection.forEach(function(section){
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
+});
