@@ -236,3 +236,12 @@ btnLoan.addEventListener('click', function(e){
 
 //   console.log(movementsUI);
 // });
+
+
+
+labelBalance.addEventListener("click", function(){
+  [...document.querySelectorAll('.movements__row')].forEach((mov, i)=>{
+    if(i % 2 == 0) mov.style.backgroundColor = "orangered";
+    else mov.style.backgroundColor = "hotpink";
+  })
+})
