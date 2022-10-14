@@ -116,7 +116,6 @@ const username = (user) =>
     .join("");
 
 accounts.forEach((account) => (account.username = username(account.owner)));
-console.log(accounts);
 
 // working on total balance.
 const calcPrintBalance = function (acc) {
@@ -128,18 +127,21 @@ const calcSummary = function(acc){
   const incomes = acc.movements
   .filter((mov) => mov > 0)
   .reduce((acc, curr) => acc + curr, 0);
+
   labelSumIn.innerText = `${incomes}€`;
 
   const out = acc.movements
     .filter((mov) => mov < 0)
     .reduce((acc, curr) => Math.abs(acc + curr), 0);
-  labelSumOut.innerText = `${Math.abs(out)}€`;
+
+  labelSumOut.innerText = `${(out)}€`;
 
   const interest = acc.movements
     .filter((mov) => mov > 0)
     .map((mov) => (mov * acc.interestRate)/ 100)
     .reduce((acc, curr) => acc + curr, 0);
-  labelSumInterest.innerText = `${interest}€`;
+
+  labelSumInterest.innerText = `${interest.toFixed(0)}€`;
 }
 
 // display movements of current account.
@@ -218,7 +220,7 @@ btnClose.addEventListener('click', function(e){
 btnLoan.addEventListener('click', function(e){
   e.preventDefault();
 
-  const amount = Number(inputLoanAmount.value);
+  const amount = Math.floor(inputLoanAmount.value);
 
   if(amount>0 && currentAccount.movements.some(mov => mov >= amount * 0.1)){
     currentAccount.movements.push(amount);
