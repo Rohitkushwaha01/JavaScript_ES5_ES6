@@ -32,6 +32,6 @@ navigator.geolocation.getCurrentPosition(
     })
   },
   function () {
-    alert("could not get you position");
+    alert("could not get your position");
   }
 );
