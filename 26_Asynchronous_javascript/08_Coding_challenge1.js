@@ -23,16 +23,18 @@ const btn = document.querySelector(".btn-country");
 const countriesContainer = document.querySelector(".countries");
 
 const whereAmI = function (lat, lng) {
-  const data = fetch(
+  fetch(
     `https://geocode.xyz/${lat},${lng}?geoit=json&auth=74705996915185159246x74184`
   )
     .then((response) => {
+        if(!response.ok) throw new Error('Problem with Geocoding')
       return response.json();
     })
     .then((data) => {
       getCountryData(data.country);
       console.log(`You are in ${data.city}, ${data.country}`);
-    });
+    })
+    .catch(err => console.log(err.message))
 };
 
 const getPosition = function () {
@@ -76,5 +78,3 @@ const getCountryData = function (country) {
 };
 
 getPosition();
-
-
