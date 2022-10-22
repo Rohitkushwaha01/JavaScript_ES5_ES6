@@ -32,3 +32,9 @@ wait(2)
     return wait(1);
   })
   .then(() => console.log("1 seconds passed"));
+
+// direct way to create resolve and reject.
+
+Promise.resolve((res)=>console.log("hello"))
+
+Promise.reject((err)=>console.error(err))
